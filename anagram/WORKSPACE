@@ -1,4 +1,4 @@
-workspace(name="project_b")
+workspace(name="anagram")
 
 # Python support
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
@@ -12,6 +12,6 @@ http_archive(
 load("@rules_python//python:pip.bzl", "pip_install")
 
 pip_install(
-   name = "project_b_requirements",
+   name = "anagram_requirements",
    requirements = "//src:requirements.txt",
 )
