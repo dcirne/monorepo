@@ -8,10 +8,22 @@ http_archive(
     sha256 = "cd6730ed53a002c56ce4e2f396ba3b3be262fd7cb68339f0377a45e8227fe332",
 )
 
-# pip dependencies
+# Install pip packages
 load("@rules_python//python:pip.bzl", "pip_install")
 
 pip_install(
    name = "calculator_requirements",
    requirements = "//src:requirements.txt",
+)
+
+# Dependencies on other projects
+local_repository(
+    name = "library",
+    path = "/workspace/lib",
+)
+
+# Install pip packages from dependency projects
+pip_install(
+   name = "compute_requirements",
+   requirements = "@library//compute:requirements.txt",
 )
