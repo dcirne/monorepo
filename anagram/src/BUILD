@@ -6,6 +6,6 @@ py_binary(
     name="anagram",
     srcs=glob(["*.py"]),
     deps=[
-        "@libraries//utils:utils"
+        "@library//utils:utils"
     ]
 )
