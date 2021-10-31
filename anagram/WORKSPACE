@@ -15,3 +15,9 @@ pip_install(
    name = "anagram_requirements",
    requirements = "//src:requirements.txt",
 )
+
+# Dependencies on other projects
+local_repository(
+    name = "library",
+    path = "/workspace/lib",
+)
