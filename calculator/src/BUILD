@@ -5,7 +5,8 @@ package(default_visibility = ["//visibility:public"])
 
 py_binary(
     name="calculator",
-    srcs=["calculator.py"],
+    srcs=["calc.py"],
+    main="calc.py",
     deps=[
         "@library//compute:compute",
         requirement("termcolor")
