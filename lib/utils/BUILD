@@ -1,6 +1,6 @@
 load("@rules_python//python:defs.bzl", "py_import")
 load("@rules_python//python:defs.bzl", "py_test")
-load("@compute_requirements//:requirements.bzl", "requirement")
+load("@utils_requirements//:requirements.bzl", "requirement")
 
 package(default_visibility = ["//visibility:public"])
 

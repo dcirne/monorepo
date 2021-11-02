@@ -17,6 +17,8 @@ docker run --rm -it -v $(pwd):/workspace monorepo:<x.y.z> /bin/bash
 cd anagram
 
 bazel build //src:anagram
+
+bazel run //src:anagram
 ```
 
 ## Testing
