@@ -1,4 +1,4 @@
-from termcolor import cprint
+from termcolor import colored
 from utils import compare_anagrams
 
 if __name__ == "__main__":
@@ -7,6 +7,13 @@ if __name__ == "__main__":
 
     for str1, str2 in zip(list1, list2):
         if compare_anagrams(str1, str2):
-            cprint(f"{str1} and {str2} are anagrams", "cyan")
+            text_color = "cyan"
+            result_message = "are anagrams"
         else:
-            cprint(f"{str1} and {str2} are not anagrams", "red")
+            text_color = "red"
+            result_message = "are not anagrams"
+
+
+        str1 = colored(str1, text_color)
+        str2 = colored(str2, text_color)
+        print(f"{str1} and {str2} {result_message}")

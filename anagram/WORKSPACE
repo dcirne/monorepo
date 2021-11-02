@@ -21,3 +21,9 @@ local_repository(
     name = "library",
     path = "/workspace/lib",
 )
+
+# Install pip packages from dependency projects
+pip_install(
+   name = "utils_requirements",
+   requirements = "@library//utils:requirements.txt",
+)
