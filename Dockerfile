@@ -16,7 +16,7 @@ WORKDIR /workspace
 RUN apt-get update && \
     apt-get -y upgrade
 
-# Install bazel
+# Install Bazel
 ARG BAZEL_VERSION=4.2.1
 
 RUN apt-get install -y --no-install-recommends \
@@ -29,10 +29,11 @@ RUN curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor > /etc/
 RUN echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list
 
 RUN apt-get update && \
-    apt-get install -y bazel-$BAZEL_VERSION
+    apt-get install -y --no-install-recommends bazel-$BAZEL_VERSION \
+    openjdk-11-jdk && \
+    ln -s /usr/bin/bazel-$BAZEL_VERSION /usr/bin/bazel && \
+    bazel version
 
-RUN apt-get install -y openjdk-11-jdk
-
-RUN ln -s /usr/bin/bazel-$BAZEL_VERSION /usr/bin/bazel
-
-RUN bazel version
+# Install Scala
+RUN wget https://downloads.lightbend.com/scala/2.12.12/scala-2.12.12.deb && \
+    dpkg -i scala-2.12.12.deb
