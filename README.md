@@ -138,9 +138,10 @@ If you do not have `graphviz` installed on your computer, copy the output of the
 
 - [Bazel](https://bazel.build)
 - [Bazel - Working with External Dependencies](https://docs.bazel.build/versions/main/external.html)
-- [Bazel Rules - Python](https://github.com/bazelbuild/rules_python)
 - [Bazel - Command-Line Reference](https://docs.bazel.build/versions/main/command-line-reference.html)
-- [Python Rules](https://docs.bazel.build/versions/main/be/python.html)
+- [Python Rules for Bazel](https://docs.bazel.build/versions/main/be/python.html)
+- [Scala Rules for Bazel](https://github.com/bazelbuild/rules_scala)
+- [Python Rules: `py_binary`, `py_library`, `py_test`, `py_runtime`](https://github.com/bazelbuild/rules_python)
 - [A User's Guide to Bazel](https://docs.bazel.build/versions/main/guide.html)
 - [How We Used Bazel to Streamline Our AI Development](https://www.spotdraft.com//engineering-blog/how-we-used-bazel-to-streamline-our-ai-development?utm_source=pocket_mylist)
 - [You too can love the MonoRepo](https://medium.com/@Jakeherringbone/you-too-can-love-the-monorepo-d95d1d6fcebe)
