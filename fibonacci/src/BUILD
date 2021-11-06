@@ -5,8 +5,9 @@ package(default_visibility = ["//visibility:public"])
 scala_binary(
     name="fibonacci",
     srcs=[
-        "src/fibonacci.scala"
+        "monorepo/fibonacci/fibonacci.scala"
     ],
+    main_class="Fibonacci",
     deps=[
         "@library//fibonator:fibonator"
     ]
