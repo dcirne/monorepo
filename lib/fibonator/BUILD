@@ -5,7 +5,7 @@ package(default_visibility = ["//visibility:public"])
 scala_library(
     name="fibonator",
     srcs=[
-        "src/fibonator.scala"
+        "src/monorepo/fibonator/fibonator.scala"
     ]
 )
 
