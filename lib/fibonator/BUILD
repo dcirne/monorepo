@@ -9,3 +9,12 @@ scala_library(
     ]
 )
 
+scala_test(
+    name="fibonator_test",
+    srcs=[
+        "src/test/monorepo/fibonator/fibonator_test.scala"
+    ],
+    deps=[
+        ":fibonator"
+    ]
+)

@@ -9,11 +9,11 @@ It is important to understand the fundamental concepts in Bazel: Workspaces, Pac
 A binary specifies the project you want to build, including dependencies and other parameters. A library specifies a framework or a package to be used by a binary. A binary may have zero, one, or many libraries.
 
 
-## Python Projects
+## The Multi-Projects
 
-There are two Python projects in this monorepo: `anagram` and `calculator`. They are independent from each other, and they both depend on another project `lib`, which provides reusable packages (libraries) for them.
+There are two Python (`anagram` and `calculator`) and one Scala (`fibonacci`) projects in this monorepo. They are all independent from each other and all of them have dependencies on yet another project (`lib`), which provides reusable packages (libraries) for them.
 
-With Bazel it is possible to specify the dependencies and generate builds that only include the necessary files and assets. For example, the `calculator` project includes the `compute` library and also a third-party dependencies. The `calculator` project depends directly only on the `termcolor` package. The `compute` library depends on `lazy-object-proxy` and `pytest`. With Bazel we can specify all that in a very elegant way. Each binary or library only needs to specify what they depend on, in this case `calculator` is not aware of the dependencies `compute` has. They are self contained.
+With Bazel it is possible to specify the dependencies and generate builds that only include the necessary files and assets. For example, the `calculator` project includes the `compute` package and also a third-party dependencies. The `calculator` project depends directly only on the `termcolor` package. The `compute` library depends on `lazy-object-proxy` and `pytest`. With Bazel we can specify all that in a very elegant way. Each binary or library only needs to specify what they depend on, in this case `calculator` is not aware of the dependencies `compute` has. They are self contained.
 
 
 ## Bazel in Action
@@ -45,7 +45,7 @@ docker run --rm -it -v $(pwd):/workspace monorepo:1.0.0 /bin/bash
 ```
 
 
-## Building and Running the First Project
+## Building and Running the Anagram Python Project
 
 Now that you have running container with Bazel, let's build and run the first project: _anagram_. In the Docker shell, switch to the `anagram` directory:
 
@@ -89,9 +89,9 @@ Alternatively, you can run the project with (it is self-contained):
 ```
 
 
-## The Second Project
+## Building and Running the Calculator Python Project
 
-Straight to the point. Switch to the `calculator` directory, build, and run:
+Switch to the `calculator` directory, build, and run:
 
 ```bash
 cd /workspace/calculator
@@ -100,9 +100,20 @@ bazel run //src:calculator
 ```
 
 
-## Testing
+## Building and Running the Fibonacci Scala Project
 
-The _anagram_ and _calculator_ projects are bare-bones and lack unit tests. Instead, we will run tests on the libraries those projects depend on. Switch to the `lib` directory:
+Switch to the `fibonacci` directory, build, and run:
+
+```bash
+cd /workspace/fibonacci
+bazel build //src:fibonacci
+bazel run //src:fibonacci
+```
+
+
+## Running Tests
+
+The main app projects: _anagram_, _calculator_, and _fibonacci_ are bare-bones and lack unit tests. Instead, we will run tests on the libraries those projects depend on. Switch to the `lib` directory:
 
 ```bash
 cd /workspace/lib
@@ -146,3 +157,4 @@ If you do not have `graphviz` installed on your computer, copy the output of the
 - [How We Used Bazel to Streamline Our AI Development](https://www.spotdraft.com//engineering-blog/how-we-used-bazel-to-streamline-our-ai-development?utm_source=pocket_mylist)
 - [You too can love the MonoRepo](https://medium.com/@Jakeherringbone/you-too-can-love-the-monorepo-d95d1d6fcebe)
 - [What is Bazel – Tutorial, Examples, and Advantages](https://semaphoreci.com/blog/bazel-build-tutorial-examples?utm_source=pocket_mylist)
+- [How to set up Bazel build tool for your Scala project](https://scalac.io/blog/set-up-bazel-build-tool-for-scala-project/) 
