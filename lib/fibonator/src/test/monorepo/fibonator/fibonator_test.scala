@@ -12,6 +12,10 @@ class FibonatorTest extends FunSuite with BeforeAndAfter {
     }
 
     test("6th Fibonacci") {
-        asset(fibonator.compute_fibonacci(6) == 8)
+        assert(fibonator.compute_fibonacci(6) == 8)
+    }
+
+    test("42nd Fibonacci") {
+        assert(fibonator.compute_fibonacci(42) == 267914296)
     }
 }
