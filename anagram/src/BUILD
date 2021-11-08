@@ -13,6 +13,9 @@ package(default_visibility = ["//visibility:public"])
 # Note that the external dependency uses the `@library` label defined in the
 # `WORKSPACE` file. This is necessary because the project uses an external dependency.
 # It also installs the required package `termcolor` that in requirements.txt.
+#
+# Rather than specifying the source code files one-by-one, `glob` was used with a 
+# predicate to include all matching files.
 py_binary(
     name="anagram",
     srcs=glob(["*.py"]),
