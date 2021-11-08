@@ -1,8 +1,8 @@
 # Monorepo Reference Implementation
 
-This is a reference implementation of a monorepo using an open-source high-level building language and tool, [Bazel](https://bazel.build), to manage and support efficient builds, runs, tests, artifact generation, multiple programming languages, and more. Bazel is multi-platform, multi-language, reliable, scalable, and extensible. It was originally created by Google it is used to manage their own monorepo.
+This is a reference implementation of a monorepo using an open-source high-level building language and tool, [Bazel](https://bazel.build), to manage and support efficient builds, runs, tests, artifact generation, multiple programming languages, and more. Bazel is multi-platform, multi-language, reliable, scalable, and extensible. It was originally created by Google to manage its own famous monorepo. Initially named Blaze, it was later renamed as Bazel (an anagram, in typical Google fashion) when it was released as an open source project.
 
-The two key configuration files are `WORKSPACE` and `BUILD`. Each project has their own `WORKSPACE` file that specifies the characteristics and dependencies of that project, plus one or more `BUILD` files that can be located within that project (directory hierarchy), a separate project in a different directory, another repository, or in the internet (third-party, outside dependency).
+Two key configuration files contain the essence of Bazel. They are: `WORKSPACE` and `BUILD`. Each project has their own `WORKSPACE` file that specifies the characteristics and dependencies of that project, plus one or more `BUILD` files, located within that project (directory hierarchy), a separate project in a different directory, another repository, or in the internet (third-party, outside dependency). Together they define how a target (project) is defined, built, run, tested, deployed, etc.
 
 It is important to understand the fundamental concepts in Bazel: Workspaces, Packages, Targets, and Labels. You can read more in the lexicon of [Concepts and Terminology](https://docs.bazel.build/versions/4.2.1/build-ref.html). When reading or writing the configuration files we want to pay special attention to the definitions of binaries and libraries.
 
@@ -187,13 +187,13 @@ A monorepo without a tool to manage it will become a challenge as it grows.
 
 |Pros | Cons |
 |-|-|
-| - Built with the purpose of managing a monorepo | - You need to grow professionally and learn it |
+| - Built with the purpose of managing a monorepo | - You need to invest in growing professionally and learn it |
 | - Support for multiple programming languages | |
 | - Scalable to very large scale | |
-| - Open source | |
-| - High-level definition language | |
+| - Open source ([Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)) | |
+| - High-level configuration language (Starlark) | |
 | - Multi-platform | |
-| - Expandable | |
+| - Extensible | |
 
 
 ## Additional Reading
