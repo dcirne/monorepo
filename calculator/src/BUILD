@@ -13,6 +13,9 @@ package(default_visibility = ["//visibility:public"])
 # Note that the external dependency uses the `@library` label defined in the
 # `WORKSPACE` file. This is necessary because the project uses an external dependency.
 # It also installs the required package `termcolor` that in requirements.txt.
+#
+# It was necessary to specify the `main` Python file, because its name is different 
+# from the name of the binary.
 py_binary(
     name="calculator",
     srcs=["calc.py"],

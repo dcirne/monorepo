@@ -170,7 +170,7 @@ A monorepo without a tool to manage it will become a challenge as it grows.
 
 |Pros | Cons |
 |-|-|
-| - Built with the purpose of managing a monorepo | - You have to learn it |
+| - Built with the purpose of managing a monorepo | - You need to learn it |
 | - Support for multiple programming languages | |
 | - Scalable to very large scale | |
 | - Open source | |
