@@ -145,6 +145,40 @@ bazel query --notool_deps --noimplicit_deps "deps(//src:calculator)" --output gr
 If you do not have `graphviz` installed on your computer, copy the output of the command above and paste it to [Sketchviz](https://sketchviz.com/new) to see the result. It is a pretty picture.
 
 
+# Documentation in the Code
+
+In addition to what you read here, there is more documentation written in the code. Go explore the files, in particular all the `WORKSPACE` and `BUILD` files. You will find how targets, dependencies, tests, and more were specified.
+
+There is one `WORKSPACE` file for `anagram`, `calculator`, `fibinacci`, and `lib`. Those are the targets of this monorepo. Note that only the first three produce a binary. The last one, `lib` produces only libraries used in the other targets.
+
+If a library is specific to a target, if can be a subdirectory nested under the target's root directory. The intention of `lib` is to provide reusable libraries and frameworks that can be leveraged by multiple projects.
+
+
+## Containerization
+
+The targets build here can be manually added to a container (e.g., Docker), or that be done automatically by using [Docker Rules for Bazel](https://github.com/bazelbuild/rules_docker). Using it is similar to using the rules for Python and Scala (see `WORKSPACE` and `BUILD` files). The result is an image you can deploy to your registry.
+
+
+## What's Next
+
+There is much more to Bazel that was not covered here. For example, you can specify the output directory for the builds, command line parameters, and much more.
+
+A monorepo without a tool to manage it will become a challenge as it grows.
+
+
+### Pros and Cons
+
+|Pros | Cons |
+|-|-|
+| - Built with the purpose of managing a monorepo | - You have to learn it |
+| - Support for multiple programming languages | |
+| - Scalable to very large scale | |
+| - Open source | |
+| - High-level definition language | |
+| - Multi-platform | |
+| - Expandable | |
+
+
 ## Additional Reading
 
 - [Bazel](https://bazel.build)
@@ -152,9 +186,10 @@ If you do not have `graphviz` installed on your computer, copy the output of the
 - [Bazel - Command-Line Reference](https://docs.bazel.build/versions/main/command-line-reference.html)
 - [Python Rules for Bazel](https://docs.bazel.build/versions/main/be/python.html)
 - [Scala Rules for Bazel](https://github.com/bazelbuild/rules_scala)
+- [Docker Rules for Bazel](https://github.com/bazelbuild/rules_docker)
 - [Python Rules: `py_binary`, `py_library`, `py_test`, `py_runtime`](https://github.com/bazelbuild/rules_python)
 - [A User's Guide to Bazel](https://docs.bazel.build/versions/main/guide.html)
 - [How We Used Bazel to Streamline Our AI Development](https://www.spotdraft.com//engineering-blog/how-we-used-bazel-to-streamline-our-ai-development?utm_source=pocket_mylist)
 - [You too can love the MonoRepo](https://medium.com/@Jakeherringbone/you-too-can-love-the-monorepo-d95d1d6fcebe)
 - [What is Bazel – Tutorial, Examples, and Advantages](https://semaphoreci.com/blog/bazel-build-tutorial-examples?utm_source=pocket_mylist)
-- [How to set up Bazel build tool for your Scala project](https://scalac.io/blog/set-up-bazel-build-tool-for-scala-project/) 
+- [How to set up Bazel build tool for your Scala project](https://scalac.io/blog/set-up-bazel-build-tool-for-scala-project/)
