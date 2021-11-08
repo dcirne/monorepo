@@ -1,6 +1,11 @@
+#
+# Configuration for this target
+#
+
+# Unique name for the workspace
 workspace(name="anagram")
 
-# Python support
+# Add support for Python
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 http_archive(
     name = "rules_python",
@@ -8,21 +13,23 @@ http_archive(
     sha256 = "cd6730ed53a002c56ce4e2f396ba3b3be262fd7cb68339f0377a45e8227fe332",
 )
 
-# pip dependencies
+# Add the ability to install pip dependencies
 load("@rules_python//python:pip.bzl", "pip_install")
 
+# Install the dependencies specified in ./src/requirements.txt
 pip_install(
    name = "anagram_requirements",
    requirements = "//src:requirements.txt",
 )
 
-# Dependencies on other projects
+# Declares the label and directory of a local but external project
+# to be referenced by this one in BUILD files
 local_repository(
     name = "library",
     path = "/workspace/lib",
 )
 
-# Install pip packages from dependency projects
+# Install the pip packages from the dependency projects
 pip_install(
    name = "utils_requirements",
    requirements = "@library//utils:requirements.txt",
