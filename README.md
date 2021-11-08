@@ -149,7 +149,7 @@ If you do not have `graphviz` installed on your computer, copy the output of the
 
 In addition to what you read here, there is more documentation written in the code. Go explore the files, in particular all the `WORKSPACE` and `BUILD` files. You will find how targets, dependencies, tests, and more were specified.
 
-There is one `WORKSPACE` file for `anagram`, `calculator`, `fibinacci`, and `lib`. Those are the targets of this monorepo. Note that only the first three produce a binary. The last one, `lib` produces only libraries used in the other targets.
+There is one `WORKSPACE` file for each `anagram`, `calculator`, `fibinacci`, and `lib` projects. Those are the targets that exist in this monorepo. Note that only the first three produce a binary. The last one, `lib` produces only libraries used in the other targets.
 
 If a library is specific to a target, if can be a subdirectory nested under the target's root directory. The intention of `lib` is to provide reusable libraries and frameworks that can be leveraged by multiple projects.
 
