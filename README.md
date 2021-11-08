@@ -11,7 +11,7 @@ A binary specifies the project you want to build, including dependencies and oth
 
 ## The Multi-Projects
 
-There are two Python (`anagram` and `calculator`) and one Scala (`fibonacci`) projects in this monorepo. They are all independent from each other and all of them have dependencies on yet another project (`lib`), which provides reusable packages (libraries) for them.
+There are two Python (`anagram` and `calculator`), one Scala (`fibonacci`), and one C++ (`hanoi`) projects in this monorepo. They are all independent from each other and most of them have dependencies on yet another project (`lib`), which provides reusable packages (libraries) for them. The C++ project does have a dependency as well, but it is internal, this way we can illustrate the many use cases.
 
 With Bazel it is possible to specify the dependencies and generate builds that only include the necessary files and assets. For example, the `calculator` project includes the `compute` package and also a third-party dependencies. The `calculator` project depends directly only on the `termcolor` package. The `compute` library depends on `lazy-object-proxy` and `pytest`. With Bazel we can specify all that in a very elegant way. Each binary or library only needs to specify what they depend on, in this case `calculator` is not aware of the dependencies `compute` has. They are self contained.
 
@@ -26,7 +26,7 @@ Go to the root directory of the monorepo and build the Docker image with:
 docker build --rm . -t monorepo:<x.y.z>
 ```
 
-Where `<x.y.z>` is a the semantic version of the image, like `0.0.1`. Feel free to use other versioning scheme or label. This image will be build on your machine only. There will be no impact on others. On my machine I build using the following command:
+Where `<x.y.z>` is a the semantic version of the image, like `1.0.0`. Feel free to use other versioning scheme or label. This image will be build on your machine only. There will be no impact on others. On my machine I build using the following command:
 
 ```bash
 docker build --rm . -t monorepo:1.0.0
@@ -111,6 +111,23 @@ bazel run //src:fibonacci
 ```
 
 
+## Building and Running the Tower of Hanoi C++ Project
+
+Switch to the `hanoi` directory, build, and run:
+
+```bash
+cd /workspace/hanoi
+bazel build //:tower_of_hanoi
+bazel run //:tower_of_hanoi
+```
+
+The default is to solve the problem using 3 discs. You can specify the number of discs in the tower as a command line parameter. For example, if you want to see the solution for 5 discs:
+
+```bash
+bazel run //:tower_of_hanoi 5
+```
+
+
 ## Running Tests
 
 The main app projects: _anagram_, _calculator_, and _fibonacci_ are bare-bones and lack unit tests. Instead, we will run tests on the libraries those projects depend on. Switch to the `lib` directory:
@@ -170,7 +187,7 @@ A monorepo without a tool to manage it will become a challenge as it grows.
 
 |Pros | Cons |
 |-|-|
-| - Built with the purpose of managing a monorepo | - You need to learn it |
+| - Built with the purpose of managing a monorepo | - You need to grow professionally and learn it |
 | - Support for multiple programming languages | |
 | - Scalable to very large scale | |
 | - Open source | |

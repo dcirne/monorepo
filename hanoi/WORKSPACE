@@ -1,0 +1,6 @@
+#
+# Configuration for this target
+#
+
+# Unique name for the workspace
+workspace(name="tower_of_hanoi")
